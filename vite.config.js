@@ -17,15 +17,14 @@ export default defineConfig({
     host: true,
     proxy: {
         '/api': {
-            target: 'http://127.0.0.1:5000/api',
+            target: 'http://127.0.0.1:5174/api',
             changeOrigin: true,
             rewrite: path => path.replace(/^\/api/, '')
         },
-        '/ws': {
-            target: 'ws://localhost:5173',
+        '/socket.io': {
+            target: 'ws://localhost:5174',
             ws: true,
-            changeOrigin: true,
-            rewrite: path => path.replace(/^\/ws/, '')
+            rewriteWsOrigin: true,
         }    
     }
     }
